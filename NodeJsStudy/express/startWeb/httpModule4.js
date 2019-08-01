@@ -1,0 +1,33 @@
+
+var http = require("http");
+
+var server = http.createServer(function( req, res) {
+	console.log("client requesting");
+
+	res.writeHead(200, {"Content-Type":"text/html; charset=utf-8"});
+	res.write("<!DOCTYPE html>");
+	res.write("<html>");
+	res.write("  <head>");
+	res.write("    <title>응답메세지</title>");
+	res.write("  </head>");
+	res.write("  <body>");
+	res.write("    <h1>노드제이에스로부터의 응답 페이지</h1>");
+	res.write("  </body>");
+	res.write("</html>");
+	res.end();
+});
+
+var port = 3000;
+server.listen(port, function() {
+	console.log(" starting web. : %d", port);
+});
+
+server.on("connection", function(socket) {
+	var addr = socket.address();
+	console.log(" connecting client. : %s %d", addr.address, addr.port);
+});
+
+
+server.on("close", function() {
+	console.log(" close server ");
+});
