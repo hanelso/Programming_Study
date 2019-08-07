@@ -1,0 +1,23 @@
+gcc 는 C컴파일러이지만 C언어 말고도 C++, Fortran, ada, Objective-C, JAVA등 컴파일이 가능한 언어들이 있다.
+
+gcc의 행동
+
+내부적으로 전처리기인 cpp0 또는 cc1 -E 명령을 호출해 정처리 과정을 수행하고, 
+진짜 C컴파일러인 cc1을 호출해 컴파일한 후 어셈플러인 as를 호출해 목적 코드를 만들고,
+마지막으로 링커를 호출하는 collect2를 호출하여,
+collect2가 내부적으로 링커인 ld를 호출해 라이브러리와 링크해 실행 파일로 만들어낸다.
+
+따라서 실제 gcc의 역할은 전처리기, C컴파일러, 어셈플러, 링커를 호출해 주는 역할이다.
+
+이렇게 컴파일 과정에 필요한 명령을 순차적으로 호출해 주는 것을 컴파일러 드라이버(compiler driver)라 부른다.
+
+gcc 는 compiler driver에 해당한다.
+
+실제 C컴파일러는 /usr/lib/gcc/i486-linux-gnu/4.1.2/cc1이다.
+
+like.c ( C 소스 ) --- cpp0 or cc1 -E 전처리기 ---> like.i ( 전처리 결과 ) --- cc1 C컴파일러 ---> like.s ( 어셈블리 파일 ) --- as 어셈블러 ---> like.o ( 오브젝트 파일 ) --- ld or collect2 링크 ---> like ( 실행 파일 )
+
+( like.c -> like.i -> like.s -> like.o -> like )
+
+
+

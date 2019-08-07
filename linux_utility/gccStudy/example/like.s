@@ -1,0 +1,1 @@
+	.file	"like.c"
