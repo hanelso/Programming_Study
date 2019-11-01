@@ -10,5 +10,6 @@
 
 void test_class(void)
 {
+	int a;
 
 }
