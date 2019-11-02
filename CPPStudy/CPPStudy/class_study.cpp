@@ -11,5 +11,6 @@
 void test_class(void)
 {
 	int a;
+	// 대체 무엇이 문제인가.
 
 }
